@@ -1,0 +1,126 @@
+ /* NAVBAR CONTAINER */
+.navbar {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 40px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.logo{
+    color: #4f46e5;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.logo:hover{
+    cursor: pointer;
+}
+
+/* BRAND */
+.navbar-brand {
+    font-size: 22px;
+    font-weight: 600;
+    color: #4f46e5;
+}
+
+/* NAV LINKS */
+.navbar-links {
+    display: flex;
+    gap: 25px;
+}
+
+/* LINKS STYLE */
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* HOVER EFFECT */
+.navbar a:hover {
+    color: #4f46e5;
+}
+
+/* ACTIVE LINK */
+.active-link {
+    color: #4f46e5;
+}
+
+.active-link::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #4f46e5;
+    left: 0;
+    bottom: -4px;
+}
+
+/* PROFILE MENU */
+.profile-menu {
+    position: relative;
+    cursor: pointer;
+    font-weight: 500;
+    color: #333;
+}
+
+/* PROFILE TEXT */
+.profile-menu span {
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.profile-menu span:hover {
+    background-color: #f3f4f6;
+}
+
+/* DROPDOWN */
+.dropdown-profile {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+/* DROPDOWN LINKS */
+.dropdown-profile a {
+    padding: 12px 15px;
+    color: #333;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+/* HOVER DROPDOWN */
+.dropdown-profile a:hover {
+    background-color: #f9fafb;
+    color: #4f46e5;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
