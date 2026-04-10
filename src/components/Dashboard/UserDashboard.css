@@ -1,0 +1,157 @@
+.userdashboard-page {
+
+  margin: 0 auto;
+  padding: 32px 24px 40px;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #eef2ff, #e0e7ff);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.User-greetings {
+  margin: 0 0 24px;
+  font-size: 34px;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.7px;
+}
+
+.userdashboard-table {
+  max-width: 1050px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.userdashboard-title {
+  margin: 0 auto 20px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #4f46e5;
+  letter-spacing: -0.3px;
+  text-align: center;  
+}
+
+.userdashboard-table-container {
+  overflow-x: auto;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+.Recent-Expenses {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.Recent-Expenses thead {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+}
+
+.Recent-Expenses thead th {
+  padding: 16px 18px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.Recent-Expenses tbody tr {
+  border-bottom: 1px solid #eef2f7;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.Recent-Expenses tbody tr:last-child {
+  border-bottom: none;
+}
+
+.Recent-Expenses tbody tr:hover {
+  background: #f8faff;
+}
+
+.Recent-Expenses tbody td {
+  padding: 15px 18px;
+  font-size: 14px;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.Recent-Expenses tbody td:nth-child(1) {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.Recent-Expenses tbody td:nth-child(2) {
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.Recent-Expenses tbody td:nth-child(2) span {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #4f46e5;
+}
+
+.Recent-Expenses tbody td:nth-child(3) {
+  font-weight: 700;
+  color: #dc2626;
+}
+
+.Recent-Expenses tbody td:nth-child(4) {
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.Recent-Expenses tbody td:nth-child(5) {
+  max-width: 260px;
+  color: #475569;
+}
+
+.userdashboard-loading,
+.userdashboard-empty {
+  padding: 24px;
+  text-align: center;
+  font-size: 15px;
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  .userdashboard-page {
+    padding: 20px 14px 28px;
+  }
+
+  .User-greetings {
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
+
+  .userdashoard-table {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .userdashboard-title {
+    font-size: 19px;
+    margin-bottom: 14px;
+  }
+
+  .Recent-Expenses thead th,
+  .Recent-Expenses tbody td {
+    padding: 13px 14px;
+    font-size: 13px;
+  }
+}

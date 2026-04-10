@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "./Category.css";
+import ConfirmModel from "../Common/ConfirmModel";
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
   const [categoryName, setCategoryName] = useState("");
   const [type, setType] = useState("Expense");
   const [loading, setLoading] = useState(true);
+
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
 
   const API = `${import.meta.env.VITE_API_URL}/api/Category`;
 
@@ -108,24 +112,28 @@ const Category = () => {
     }
   };
 
-  const handleDeleteCategory = async (id) => {
-    const confirmDelete = window.confirm("Delete this category?");
-    if (!confirmDelete) return;
+  const handleDeleteCategory = (id) => {
+    setDeleteId(id);
+    setShowConfirm(true);
+  };
 
+  const confirmDeleteCategory = async () => {
     try {
       const token = localStorage.getItem("accessToken");
 
-      await axios.delete(`${API}/${id}`, {
+      await axios.delete(`${API}/${deleteId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
       setCategories((prev) =>
-        prev.filter((cat) => cat.categoryId !== id)
+        prev.filter((cat) => cat.categoryId !== deleteId)
       );
 
       toast.success("Category deleted successfully");
+      setShowConfirm(false);
+      setDeleteId(null);
     } catch (error) {
       console.error("Error deleting category:", error);
       console.log("Backend response:", error.response?.data);
@@ -157,85 +165,97 @@ const Category = () => {
   }
 
   return (
-    <div className="category-page">
-      <div className="category-header">
-        <h2 className="category-title">My Categories</h2>
-      </div>
+    <>
+      <div className="category-page">
+        <div className="category-header">
+          <h2 className="category-title">My Categories</h2>
+        </div>
 
-      <div className="category-card">
-        <div className="category-toggle-wrapper">
-          <div className="category-toggle">
-            <div
-              className={`category-toggle-slider ${
-                type === "Income" ? "right" : ""
-              }`}
-            ></div>
+        <div className="category-card">
+          <div className="category-toggle-wrapper">
+            <div className="category-toggle">
+              <div
+                className={`category-toggle-slider ${
+                  type === "Income" ? "right" : ""
+                }`}
+              ></div>
 
-            <button
-              type="button"
-              className={`category-toggle-btn ${
-                type === "Expense" ? "active" : ""
-              }`}
-              onClick={() => setType("Expense")}
-            >
-              Expense
+              <button
+                type="button"
+                className={`category-toggle-btn ${
+                  type === "Expense" ? "active" : ""
+                }`}
+                onClick={() => setType("Expense")}
+              >
+                Expense
+              </button>
+
+              <button
+                type="button"
+                className={`category-toggle-btn ${
+                  type === "Income" ? "active" : ""
+                }`}
+                onClick={() => setType("Income")}
+              >
+                Income
+              </button>
+            </div>
+          </div>
+
+          <form className="category-form" onSubmit={handleAddCategory}>
+            <input
+              className="category-input"
+              type="text"
+              placeholder={`Enter new ${type.toLowerCase()} category`}
+              value={categoryName}
+              onChange={(e) => setCategoryName(e.target.value)}
+            />
+
+            <button className="category-add-btn" type="submit">
+              Add {type}
             </button>
+          </form>
 
-            <button
-              type="button"
-              className={`category-toggle-btn ${
-                type === "Income" ? "active" : ""
-              }`}
-              onClick={() => setType("Income")}
-            >
-              Income
-            </button>
+          <div className="category-list">
+            {categories.length === 0 ? (
+              <p className="category-empty">
+                No {type.toLowerCase()} categories found
+              </p>
+            ) : (
+              categories.map((cat) => (
+                <div className="category-item" key={cat.categoryId}>
+                  <div className="category-info">
+                    <span className="category-name">{cat.categoryName}</span>
+                    <span className="category-type-badge">
+                      {cat.type || type}
+                    </span>
+                  </div>
+
+                  <button
+                    className="category-delete-btn"
+                    type="button"
+                    onClick={() => handleDeleteCategory(cat.categoryId)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))
+            )}
           </div>
         </div>
-
-        <form className="category-form" onSubmit={handleAddCategory}>
-          <input
-            className="category-input"
-            type="text"
-            placeholder={`Enter new ${type.toLowerCase()} category`}
-            value={categoryName}
-            onChange={(e) => setCategoryName(e.target.value)}
-          />
-
-          <button className="category-add-btn" type="submit" 
-          >
-            Add {type}
-          </button>
-        </form>
-
-        <div className="category-list">
-          {categories.length === 0 ? (
-            <p className="category-empty">
-              No {type.toLowerCase()} categories found
-            </p>
-          ) : (
-            categories.map((cat) => (
-              <div className="category-item" key={cat.categoryId}>
-                <div className="category-info">
-                  <span className="category-name">{cat.categoryName}</span>
-                  <span className="category-type-badge">
-                    {cat.type || type}
-                  </span>
-                </div>
-
-                <button
-                  className="category-delete-btn"
-                  type="button"
-                  onClick={() => handleDeleteCategory(cat.categoryId)}
-                >
-                  Delete
-                </button>
-              </div>
-            ))
-          )}
-        </div>
       </div>
-    </div>
+
+      {showConfirm && (
+        <ConfirmModel
+          message="Delete this category?"
+          onConfirm={confirmDeleteCategory}
+          onCancel={() => {
+            setShowConfirm(false);
+            setDeleteId(null);
+          }}
+        />
+      )}
+    </>
   );
 };
 

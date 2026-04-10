@@ -122,3 +122,92 @@
   margin-top: 40px;
   font-size: 18px;
 }
+
+.expenses-table tbody td:nth-child(1) {
+  font-weight: 600;
+  color: #0f172a;
+}
+.expenses-table tbody td:nth-child(2) {
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.expenses-table tbody td:nth-child(2) span {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #4f46e5;
+}
+
+.expenses-table tbody td:nth-child(3) {
+  font-weight: 700;
+  color: #dc2626;
+}
+
+.Recent-Expenses tbody td:nth-child(4) {
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.Recent-Expenses tbody td:nth-child(5) {
+  max-width: 260px;
+  color: #475569;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+/* Buttons */
+.pagination button {
+  min-width: 90px;
+  height: 40px;
+
+  border-radius: 10px;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagination {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* 🔥 KEY */
+  align-items: center;
+  margin-top: 22px;
+}
+
+/* Left button */
+.pagination button:first-child {
+  justify-self: start;
+}
+
+/* Right button */
+.pagination button:last-child {
+  justify-self: end;
+}
+
+/* Center text */
+.pagination span {
+  justify-self: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+}

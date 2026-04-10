@@ -151,7 +151,7 @@ const AddIncome = () => {
                         required
                     />
 
-                    {/* ✅ FIXED SOURCE DROPDOWN */}
+                    
                     <select
                         className="addincome-input"
                         name="source"
@@ -164,7 +164,7 @@ const AddIncome = () => {
                         {categories.map((cat) => (
                             <option
                                 key={cat.categoryId}
-                                value={cat.categoryName}   // ✅ IMPORTANT FIX
+                                value={cat.categoryName}
                             >
                                 {cat.categoryName}
                             </option>

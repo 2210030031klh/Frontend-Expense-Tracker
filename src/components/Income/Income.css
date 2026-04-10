@@ -122,3 +122,42 @@
   margin-top: 40px;
   font-size: 18px;
 }
+
+
+.incomes-table tbody td:nth-child(1) {
+  font-weight: 600;
+  color: #0f172a;
+}
+.incomes-table tbody td:nth-child(2) {
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.incomes-table tbody td:nth-child(2) span {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #4f46e5;
+}
+
+.incomes-table tbody td:nth-child(3) {
+  font-weight: 700;
+  color: #109c00;
+}
+
+.incomes-table tbody td:nth-child(4) {
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.incomes-table tbody td:nth-child(5) {
+  max-width: 260px;
+  color: #475569;
+}

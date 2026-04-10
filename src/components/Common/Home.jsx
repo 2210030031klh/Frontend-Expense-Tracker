@@ -48,7 +48,7 @@ export default function Home() {
 
       {/* Footer */}
       <div className="home-footer">
-        © 2026 ExpenseTracker. Built by Shashi 🚀
+        © 2026 ExpenseTracker. All rights reserved.
       </div>
 
     </div>

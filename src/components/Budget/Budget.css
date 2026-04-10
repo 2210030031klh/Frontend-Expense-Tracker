@@ -328,3 +328,27 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+.budget-table tbody td:nth-child(1) {
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.budget-table tbody td:nth-child(1) span {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #4f46e5;
+}
+.budget-table tbody td:nth-child(2) {
+  font-weight: 700;
+  color: #cdc824;
+}

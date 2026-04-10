@@ -20,6 +20,8 @@ import UpdateExpense from './components/Expenses/UpdateExpense'
 import AddExpense from './components/Expenses/AddExpense'
 import AddIncome from './components/Income/AddIncome'
 import UpdateIncome from './components/Income/UpdateIncome'
+import AddBudget from './components/Budget/AddBudget'
+import EditBudget from './components/Budget/EditBudget'
 
 
 
@@ -49,6 +51,8 @@ const App = () => {
     <Route path="/AddExpense" element={<AddExpense/>}/>
     <Route path="/AddIncome" element={<AddIncome/>}/>
     <Route path="/UpdateIncome" element={<UpdateIncome/>}/>
+    <Route path="/AddBudget" element={<AddBudget />} />
+    <Route path="/EditBudget" element={<EditBudget />} />
 
 
     </Route>

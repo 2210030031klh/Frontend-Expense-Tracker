@@ -80,8 +80,9 @@
 }
 
 .expensefilters-date {
-  min-width: 180px;
-  padding: 10px 12px;
+  min-width: 140px;
+  height: 40px;
+  padding: 0px 12px;
   border-radius: 10px;
   border: 1px solid #e5e7eb;
   font-size: 14px;

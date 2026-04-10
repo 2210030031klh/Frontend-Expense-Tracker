@@ -1,0 +1,172 @@
+/* Container */
+.dashboard-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin: 20px 0 30px;
+}
+
+/* Card */
+.dashboard-cards-item {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px 22px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f1f5f9;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle gradient top bar */
+.dashboard-cards-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #6366f1, #22c55e);
+  opacity: 0.9;
+}
+
+/* hover effect */
+.dashboard-cards-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Title */
+.dashboard-cards-title {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Main Value */
+.dashboard-cards-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.dashboard-cards-value-highlight {
+  color: #22c55e;
+}
+
+/* Subtext (this month breakdown) */
+.dashboard-cards-thismonth {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* Optional: negative balance styling */
+.dashboard-cards-value-negative {
+  color: #ef4444;
+}
+.dashboard-cards-item:nth-child(2) .dashboard-cards-value {
+  color: #2563eb;
+}
+.dashboard-cards-item:nth-child(3) .dashboard-cards-value {
+  color: #dc2626;
+}
+.dashboard-cards-item:nth-child(4) .dashboard-cards-value {
+  color: #7c3aed;
+}
+
+/* wrapper so everything aligns nicely */
+.dashboard-cards-wrapper {
+  margin: 20px 0 30px;
+}
+
+/* Monthly usage card */
+.dashboard-month-progress-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px 22px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f1f5f9;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  max-width: 1050px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.dashboard-month-progress-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #6366f1, #22c55e);
+  opacity: 0.9;
+}
+
+.dashboard-month-progress-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-month-progress-values {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 14px 0 12px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.dashboard-month-income {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.dashboard-month-expense {
+  font-size: 14px;
+  font-weight: 600;
+  color: #dc2626;
+}
+
+.dashboardcards-progress-track {
+  width: 90%;
+  height: 12px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  margin: 0 auto 12px;
+}
+
+.dashboardcards-progress-spent {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #6366f1);
+  transition: width 0.35s ease;
+}
+
+.dashboardcards-progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .dashboard-month-progress-values,
+  .dashboardcards-progress-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+

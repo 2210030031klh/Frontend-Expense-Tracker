@@ -1,11 +1,14 @@
+/* IncomeCards.css */
+
 /* 🔹 Container */
 .income-cards-container {
   display: flex;
   gap: 14px;
   margin: 20px 0 25px;
+  flex-wrap: nowrap;
 }
 
-/* 🔹 Small compact card */
+/* 🔹 Card */
 .income-cards-item {
   flex: 1;
   padding: 12px 14px;
@@ -40,12 +43,12 @@
   color: #111827;
 }
 
-/* 🔹 Highlight (Total Income → green) */
+/* 🔹 Highlight */
 .income-cards-value-highlight {
-  color: #16a34a;
+  color: #22c55e; /* green for income */
 }
 
-/* 🔹 Optional subtle color accents */
+/* 🔹 Accent colors */
 .income-cards-item:nth-child(2) .income-cards-value {
   color: #4f46e5;
 }
@@ -58,12 +61,7 @@
   color: #d97706;
 }
 
-/* 🔹 Keep all in one row always */
-.income-cards-container {
-  flex-wrap: nowrap;
-}
-
-/* 🔹 Scroll if screen is small */
+/* 🔹 Mobile scroll */
 @media (max-width: 768px) {
   .income-cards-container {
     overflow-x: auto;

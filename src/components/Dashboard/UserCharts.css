@@ -1,0 +1,65 @@
+.usercharts-wrapper {
+  max-width: 1100px;
+  margin: 0 auto 30px;
+}
+
+.usercharts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.usercharts-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px 22px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f1f5f9;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.usercharts-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #6366f1, #22c55e);
+  opacity: 0.9;
+}
+
+.usercharts-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.usercharts-title {
+  font-size: 16px;
+  color: #0f172a;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.usercharts-pie-container,
+.usercharts-line-container {
+  position: relative;
+  width: 100%;
+  height: 320px;
+}
+
+.usercharts-loading,
+.usercharts-empty {
+  text-align: center;
+  font-size: 14px;
+  color: #64748b;
+  padding: 30px 0;
+}
+
+@media (max-width: 900px) {
+  .usercharts-grid {
+    grid-template-columns: 1fr;
+  }
+}

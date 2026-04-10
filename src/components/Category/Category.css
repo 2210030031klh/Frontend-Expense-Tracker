@@ -1,59 +1,60 @@
 .category-page {
   font-family: Arial, sans-serif;
-  max-width: 980px;
-  margin: 36px auto;
-  padding: 24px 20px 40px;
+  max-width: 900px;
+  margin: 28px auto;
+  padding: 20px 18px 32px;
 }
 
 .category-header {
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .category-title {
-  font-size: 42px;
+  font-size: 34px;
   font-weight: 800;
   line-height: 1.1;
   color: #4f46e5;
   margin: 0;
-  letter-spacing: -0.8px;
+  letter-spacing: -0.6px;
 }
 
 .category-card {
   background: #ffffff;
   border: 1px solid #eceff5;
-  border-radius: 28px;
-  padding: 28px;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
 }
 
 .category-toggle-wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .category-toggle {
   position: relative;
   display: flex;
   align-items: center;
-  width: 260px;
+  width: 220px;
+  height: 42px;
   background: #eef2ff;
   border-radius: 999px;
-  padding: 5px;
+  padding: 4px;
   overflow: hidden;
 }
 
 .category-toggle-slider {
   position: absolute;
-  top: 5px;
-  left: 5px;
-  width: calc(50% - 5px);
-  height: calc(100% - 10px);
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
   background: linear-gradient(135deg, #4f46e5, #6366f1);
   border-radius: 999px;
   transition: all 0.3s ease;
   z-index: 0;
-  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.22);
+  box-shadow: 0 6px 14px rgba(79, 70, 229, 0.18);
 }
 
 .category-toggle-slider.right {
@@ -62,11 +63,11 @@
 
 .category-toggle-btn {
   flex: 1;
-  height: 50px;
+  height: 100%;
   border: none;
   background: transparent;
   color: #475569;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   position: relative;
@@ -81,23 +82,25 @@
 
 .category-form {
   display: flex;
-  gap: 14px;
+  flex-direction: row;
+  gap: 10px;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .category-input {
   flex: 1;
   min-width: 0;
-  height: 58px;
-  padding: 0 18px;
+  height: 46px;
+  padding: 0 14px;
   border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  font-size: 16px;
+  border-radius: 14px;
+  font-size: 14px;
   color: #111827;
   background: #fcfcfd;
   outline: none;
   transition: all 0.25s ease;
+  box-sizing: border-box;
 }
 
 .category-input::placeholder {
@@ -107,61 +110,67 @@
 .category-input:focus {
   border-color: #6366f1;
   background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
 .category-add-btn {
-  height: 58px;
-  padding: 0 24px;
+  height: 46px;
+  padding: 0 18px;
   border: none;
-  border-radius: 18px;
+  border-radius: 14px;
   background: linear-gradient(135deg, #4f46e5, #6366f1);
   color: #ffffff;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
   cursor: pointer;
   transition: all 0.25s ease;
-  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.18);
+  box-shadow: 0 8px 16px rgba(79, 70, 229, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .category-add-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 24px rgba(79, 70, 229, 0.24);
+  box-shadow: 0 12px 20px rgba(79, 70, 229, 0.2);
 }
 
 .category-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 .category-item {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
-  gap: 16px;
-  padding: 14px 18px;
+  gap: 12px;
+  height: 52px;
+  padding: 0 15px;
   background: linear-gradient(180deg, #fbfcff, #f8fafc);
   border: 1px solid #e9eef6;
-  border-radius: 18px;
+  border-radius: 14px;
   transition: all 0.22s ease;
 }
 
 .category-item:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.05);
 }
 
 .category-info {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex: 1;
   min-width: 0;
 }
 
 .category-name {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 600;
   color: #1e293b;
   margin: 0;
@@ -171,95 +180,76 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 5px 10px;
+  padding: 4px 9px;
   border-radius: 999px;
   background: #eef2ff;
   color: #4f46e5;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   line-height: 1;
   border: 1px solid #dbe4ff;
 }
 
 .category-delete-btn {
-  min-width: 92px;
-  height: 42px;
-  padding: 0 16px;
+  width: 78px;
+  height: 34px;
+  padding: 0;
   border: none;
-  border-radius: 14px;
+  border-radius: 10px;
   background: linear-gradient(135deg, #ef4444, #f87171);
   color: #ffffff;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.22s ease;
-  box-shadow: 0 8px 16px rgba(239, 68, 68, 0.16);
+  box-shadow: 0 6px 12px rgba(239, 68, 68, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .category-delete-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 20px rgba(239, 68, 68, 0.22);
+  box-shadow: 0 10px 16px rgba(239, 68, 68, 0.18);
 }
 
 .category-empty,
 .category-loading {
-  font-size: 15px;
+  font-size: 14px;
   color: #6b7280;
   text-align: center;
-  padding: 18px 0 8px;
+  padding: 16px 0 6px;
 }
 
 @media (max-width: 768px) {
   .category-page {
-    margin: 24px auto;
-    padding: 16px;
+    margin: 20px auto;
+    padding: 14px;
   }
 
   .category-title {
-    font-size: 34px;
+    font-size: 28px;
   }
 
   .category-card {
-    padding: 20px;
-    border-radius: 22px;
-  }
-
-  .category-form {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .category-add-btn {
-    width: 100%;
+    padding: 18px;
+    border-radius: 18px;
   }
 
   .category-item {
-    padding: 14px 14px;
+    height: 52px;
+    padding: 0 12px;
   }
 
   .category-name {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 560px) {
   .category-toggle {
-    width: 100%;
-    max-width: 260px;
-  }
-
-  .category-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .category-info {
-    width: 100%;
-    justify-content: space-between;
-    gap: 10px;
-  }
-
-  .category-delete-btn {
-    width: 100%;
+    width: 80%;
+    max-width: 220px;
   }
 }

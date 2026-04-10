@@ -2,11 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./IncomeFilters.css";
 
-const IncomeFilters = ({ incomes = [], setFilteredIncomes }) => {
-  const [search, setSearch] = useState("");
+const IncomeFilters = ({
+  search,
+  setSearch,
+  sortOrder,
+  setSortOrder,
+  onSourceChange,
+  onDateFilter,
+  onClear,
+}) => {
   const [categories, setCategories] = useState([]);
   const [selectedSource, setSelectedSource] = useState("");
-  const [sortOrder, setSortOrder] = useState("recent");
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
 
@@ -15,10 +21,6 @@ const IncomeFilters = ({ incomes = [], setFilteredIncomes }) => {
   useEffect(() => {
     fetchCategories();
   }, []);
-
-  useEffect(() => {
-    applyFilters();
-  }, [search, selectedSource, sortOrder, fromDate, toDate, incomes]);
 
   const fetchCategories = async () => {
     try {
@@ -30,53 +32,33 @@ const IncomeFilters = ({ incomes = [], setFilteredIncomes }) => {
         },
       });
 
-      setCategories(res.data);
+      setCategories(res.data || []);
     } catch (error) {
       console.error("Error fetching income categories:", error);
     }
   };
 
-  const applyFilters = () => {
-    let updated = [...incomes];
+  const handleSourceClick = (source) => {
+    setSelectedSource(source);
+    onSourceChange(source);
+  };
 
-    if (search.trim()) {
-      updated = updated.filter(
-        (i) =>
-          i.name.toLowerCase().includes(search.toLowerCase()) ||
-          (i.description || "").toLowerCase().includes(search.toLowerCase()) ||
-          (i.source || "").toLowerCase().includes(search.toLowerCase())
-      );
+  const handleDateChange = (newFromDate, newToDate) => {
+    setFromDate(newFromDate);
+    setToDate(newToDate);
+
+    if (newFromDate && newToDate) {
+      onDateFilter(newFromDate, newToDate);
     }
-
-    if (selectedSource) {
-      updated = updated.filter((i) => i.source === selectedSource);
-    }
-
-    if (fromDate) {
-      updated = updated.filter((i) => new Date(i.date) >= new Date(fromDate));
-    }
-
-    if (toDate) {
-      updated = updated.filter((i) => new Date(i.date) <= new Date(toDate));
-    }
-
-    updated.sort((a, b) => {
-      if (sortOrder === "recent") {
-        return new Date(b.date) - new Date(a.date);
-      }
-      return new Date(a.date) - new Date(b.date);
-    });
-
-    setFilteredIncomes(updated);
   };
 
   const handleClear = () => {
     setSearch("");
-    setSelectedSource("");
     setSortOrder("recent");
+    setSelectedSource("");
     setFromDate("");
     setToDate("");
-    setFilteredIncomes(incomes);
+    onClear();
   };
 
   return (
@@ -113,14 +95,14 @@ const IncomeFilters = ({ incomes = [], setFilteredIncomes }) => {
           className="incomefilters-date"
           type="date"
           value={fromDate}
-          onChange={(e) => setFromDate(e.target.value)}
+          onChange={(e) => handleDateChange(e.target.value, toDate)}
         />
 
         <input
           className="incomefilters-date"
           type="date"
           value={toDate}
-          onChange={(e) => setToDate(e.target.value)}
+          onChange={(e) => handleDateChange(fromDate, e.target.value)}
         />
       </div>
 
@@ -130,7 +112,7 @@ const IncomeFilters = ({ incomes = [], setFilteredIncomes }) => {
           className={`incomefilters-category-btn ${
             selectedSource === "" ? "active" : ""
           }`}
-          onClick={() => setSelectedSource("")}
+          onClick={() => handleSourceClick("")}
         >
           All
         </button>
@@ -142,7 +124,7 @@ const IncomeFilters = ({ incomes = [], setFilteredIncomes }) => {
             className={`incomefilters-category-btn ${
               selectedSource === cat.categoryName ? "active" : ""
             }`}
-            onClick={() => setSelectedSource(cat.categoryName)}
+            onClick={() => handleSourceClick(cat.categoryName)}
           >
             {cat.categoryName}
           </button>

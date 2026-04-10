@@ -2,23 +2,32 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./ExpenseFilters.css";
 
-const ExpenseFilters = ({ expenses = [], setFilteredExpenses }) => {
-  const [search, setSearch] = useState("");
+const ExpenseFilters = ({
+  search,
+  setSearch,
+  sortOrder,
+  setSortOrder,
+  onCategoryChange,
+  onDateFilter,
+  onClear,
+}) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [sortOrder, setSortOrder] = useState("recent");
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
 
-  const CATEGORY_API = `${import.meta.env.VITE_API_URL}/api/category?type=Expense `;
+  const CATEGORY_API = `${import.meta.env.VITE_API_URL}/api/category?type=Expense`;
 
   useEffect(() => {
     fetchCategories();
   }, []);
 
   useEffect(() => {
-    applyFilters();
-  }, [search, selectedCategory, sortOrder, fromDate, toDate, expenses]);
+    if (fromDate && toDate) {
+      onDateFilter(fromDate, toDate);
+    }
+  }, [fromDate, toDate]);
+
 
   const fetchCategories = async () => {
     try {
@@ -36,43 +45,11 @@ const ExpenseFilters = ({ expenses = [], setFilteredExpenses }) => {
     }
   };
 
-  const applyFilters = () => {
-    let updated = [...expenses];
-
-    if (search.trim()) {
-      updated = updated.filter((e) =>
-        e.name.toLowerCase().includes(search.toLowerCase()) ||
-        (e.description || "").toLowerCase().includes(search.toLowerCase())
-      );
-    }
-
-    if (selectedCategory) {
-      updated = updated.filter(
-        (e) => e.categoryName === selectedCategory
-      );
-    }
-
-    if (fromDate) {
-      updated = updated.filter(
-        (e) => new Date(e.date) >= new Date(fromDate)
-      );
-    }
-
-    if (toDate) {
-      updated = updated.filter(
-        (e) => new Date(e.date) <= new Date(toDate)
-      );
-    }
-
-    updated.sort((a, b) => {
-      if (sortOrder === "recent") {
-        return new Date(b.date) - new Date(a.date);
-      }
-      return new Date(a.date) - new Date(b.date);
-    });
-
-    setFilteredExpenses(updated);
+  const handleApplyDate = () => {
+    onDateFilter(fromDate, toDate);
   };
+
+  
 
   const handleClear = () => {
     setSearch("");
@@ -80,7 +57,7 @@ const ExpenseFilters = ({ expenses = [], setFilteredExpenses }) => {
     setSortOrder("recent");
     setFromDate("");
     setToDate("");
-    setFilteredExpenses(expenses);
+    onClear();
   };
 
   return (
@@ -134,7 +111,10 @@ const ExpenseFilters = ({ expenses = [], setFilteredExpenses }) => {
           className={`expensefilters-category-btn ${
             selectedCategory === "" ? "active" : ""
           }`}
-          onClick={() => setSelectedCategory("")}
+          onClick={() => {setSelectedCategory("");
+            onCategoryChange("");
+          }
+          }
         >
           All
         </button>
@@ -146,7 +126,9 @@ const ExpenseFilters = ({ expenses = [], setFilteredExpenses }) => {
             className={`expensefilters-category-btn ${
               selectedCategory === cat.categoryName ? "active" : ""
             }`}
-            onClick={() => setSelectedCategory(cat.categoryName)}
+            onClick={() => {setSelectedCategory(cat.categoryName);
+              onCategoryChange(cat.categoryName);
+            }}
           >
             {cat.categoryName}
           </button>
