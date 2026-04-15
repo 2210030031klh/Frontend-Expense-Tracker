@@ -24,10 +24,12 @@ const Expense = () => {
   const [deleteId, setDeleteId] = useState(null);
 
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [exporting, setExporting] = useState(false);
 
   const navigate = useNavigate();
 
   const API = `${import.meta.env.VITE_API_URL}/api/Expense`;
+  const export_API= `${import.meta.env.VITE_API_URL}/api/Expense/export`;
 
   const getAuthConfig = () => {
     const token = localStorage.getItem("accessToken");
@@ -199,6 +201,39 @@ const Expense = () => {
       toast.error("Failed to delete expense. Please try again.");
     }
   };
+    const handleExportExcel = async () => {
+    try {
+      setExporting(true);
+
+      const response = await axios.get(export_API,getAuthConfig(),
+        {
+          responseType: "blob",
+        }
+      );
+
+      const blob = new Blob([
+        response.data,
+      ], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
+
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Expenses.xlsx";
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error exporting expenses:", error);
+      alert("Failed to export expenses.");
+    } finally {
+      setExporting(false);
+    }
+  };
 
   const handleClearFilters = async () => {
     setSearch("");
@@ -209,17 +244,30 @@ const Expense = () => {
   };
 
   return (
+
     <>
       <div className="expenses-page">
         <div className="expenses-header">
-          <h2 className="expenses-title">All Expenses</h2>
+          <h1 className="expenses-title">All Expenses</h1>
+        <div className="expenses-header-actions">
+
           <button
             className="expenses-add-button"
             onClick={() => navigate("/AddExpense")}
           >
             + Add Expense
           </button>
+
+          <button
+            className="expenses-add-button"
+            onClick={handleExportExcel}
+            disabled={exporting}
+          >
+            {exporting ? "Exporting..." : "Export Excel"}
+          </button>
         </div>
+      </div>
+
 
         <ExpenseCards summary={summary} />
 

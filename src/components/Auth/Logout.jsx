@@ -1,21 +1,20 @@
-import React,{useEffect} from 'react'
-import {useNavigate} from 'react-router-dom'
-import { toast } from 'react-toastify';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Logout = () => {
-    const navigate= useNavigate();
+  const navigate = useNavigate();
 
-    useEffect(()=>{
-        //remove tokens from local storage
-        localStorage.removeItem("accessToken")
-        localStorage.removeItem("refreshToken")
-        navigate('/login')
-        toast.success("Logged out successfully")
+  useEffect(() => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
 
-    },[])
-  return (
-    <div>Logging out..</div>
-  )
-}
+    toast.success("Logged out successfully");
 
-export default Logout
+    navigate("/login", { replace: true }); 
+  }, []);
+
+  return <div>Logging out...</div>;
+};
+
+export default Logout;

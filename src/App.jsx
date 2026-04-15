@@ -15,13 +15,15 @@ import Budget from "./components/Budget/Budget"
 import ForgotPassword from './components/Auth/ForgotPassword'
 import LandingPage from './components/Common/LandingPage'
 import VerifyOtp from './components/Auth/VerifyOtp'
-import ResetPassword from './components/Profile/ResetPassword'
 import UpdateExpense from './components/Expenses/UpdateExpense'
 import AddExpense from './components/Expenses/AddExpense'
 import AddIncome from './components/Income/AddIncome'
 import UpdateIncome from './components/Income/UpdateIncome'
 import AddBudget from './components/Budget/AddBudget'
 import EditBudget from './components/Budget/EditBudget'
+import ResetPassword from './components/Auth/ResetPassword'
+import Footer from './components/Common/Footer'
+import ProtectedRoute from './components/Auth/ProtectedRoute'
 
 
 
@@ -35,13 +37,18 @@ const App = () => {
     <Route path='/register' element={<Register/>}/>
     <Route path="/Forgotpassword" element ={<ForgotPassword/>}/>
     <Route path="/verify-otp" element={<VerifyOtp/>}/>
+    <Route path="/ResetPassword" element={<ResetPassword/>}/>
 
-    <Route element={<Layout/>}> 
-    <Route path='/home' element={<Home/>}/>
-    <Route path='/UserDashboard' element = {<UserDashboard/>}/>
-    <Route path='/Logout' element={<Logout/>}/>
-    <Route path="/Categories" element={<Category/>}/>
-    <Route path="/Profile" element={<Profile/>}/>
+    <Route element={
+      <ProtectedRoute>
+        <Layout/>
+      </ProtectedRoute>
+    }>
+      <Route path='/home' element={<Home/>}/>
+      <Route path='/UserDashboard' element = {<UserDashboard/>}/>
+      <Route path='/Logout' element={<Logout/>}/>
+      <Route path="/Categories" element={<Category/>}/>
+      <Route path="/Profile" element={<Profile/>}/>
     <Route path="/Logout" element={<Logout/>}/>
     <Route path="/Income" element={<Income/>}/>
     <Route path="/Expenses" element={<Expense/>}/>
@@ -53,6 +60,7 @@ const App = () => {
     <Route path="/UpdateIncome" element={<UpdateIncome/>}/>
     <Route path="/AddBudget" element={<AddBudget />} />
     <Route path="/EditBudget" element={<EditBudget />} />
+ 
 
 
     </Route>

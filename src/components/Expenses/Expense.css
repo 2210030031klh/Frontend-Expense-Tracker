@@ -7,6 +7,8 @@
   padding: 40px 20px;
 }
 
+
+
 .expenses-container {
   max-width: 1000px;
   margin: auto;
@@ -26,19 +28,28 @@
 .expenses-title {
   color: #4f46e5;
   font-size: 26px;
-  margin: 0; /* important */
+  margin: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
 }
 
 .expenses-add-button {
   background: #4f46e5;
   color: white;
   border: none;
-  padding: 10px 18px;
+  height: 42px;
+  padding: 0 18px;
   border-radius: 10px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
 }
 
 .expenses-add-button:hover {
@@ -54,20 +65,26 @@
   border-collapse: collapse;
 }
 
+.expenses-table th:last-child {
+  text-align: center;
+}
+
 .expenses-table th {
   text-align: left;
-  padding: 12px;
+  padding: 10px 12px;
   background: #eef2ff;
   color: #4f46e5;
   font-weight: 600;
   font-size: 14px;
+  line-height: 1;
 }
 
 .expenses-table td {
-  padding: 12px;
+  padding: 18px 10px;
   border-bottom: 1px solid #e5e7eb;
   font-size: 14px;
   color: #333;
+  vertical-align: middle;
 }
 
 .expenses-table tr:hover {
@@ -80,17 +97,26 @@
 }
 
 .expenses-actions {
-  display: flex;
-  gap: 8px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
 }
 
-.expenses-btn {
-  padding: 6px 12px;
-  border-radius: 6px;
+/* buttons inside action cell */
+.expenses-actions .expenses-btn {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 8px;
   font-size: 13px;
   cursor: pointer;
   border: none;
   transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  vertical-align: middle;
+  margin: 0 4px;
 }
 
 .expenses-btn.update {
@@ -127,6 +153,7 @@
   font-weight: 600;
   color: #0f172a;
 }
+
 .expenses-table tbody td:nth-child(2) {
   color: #4f46e5;
   font-weight: 600;
@@ -136,14 +163,12 @@
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
-
   background: #eef2ff;
   border: 1px solid #c7d2fe;
-
   font-size: 12px;
   font-weight: 600;
-
   color: #4f46e5;
+  line-height: 1;
 }
 
 .expenses-table tbody td:nth-child(3) {
@@ -151,63 +176,59 @@
   color: #dc2626;
 }
 
-.Recent-Expenses tbody td:nth-child(4) {
+.expenses-table tbody td:nth-child(4) {
   color: #64748b;
   white-space: nowrap;
 }
 
-.Recent-Expenses tbody td:nth-child(5) {
+.expenses-table tbody td:nth-child(5) {
   max-width: 260px;
   color: #475569;
 }
 
 .pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  margin-top: 22px;
-}
-
-/* Buttons */
-.pagination button {
-  min-width: 90px;
-  height: 40px;
-
-  border-radius: 10px;
-  border: none;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.pagination {
   display: grid;
-  grid-template-columns: 1fr auto 1fr; /* 🔥 KEY */
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   margin-top: 22px;
 }
 
-/* Left button */
 .pagination button:first-child {
   justify-self: start;
 }
 
-/* Right button */
 .pagination button:last-child {
   justify-self: end;
 }
 
-/* Center text */
+.pagination button {
+  min-width: 90px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .pagination span {
   justify-self: center;
   font-size: 14px;
   font-weight: 600;
   color: #475569;
+}
+
+.expenses-actions {
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.expenses-header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

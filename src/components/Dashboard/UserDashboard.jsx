@@ -86,7 +86,14 @@ const UserDashboard = () => {
         </thead>
 
         <tbody>
-          {recentExpenses.map((expense) => (
+            {recentExpenses.length === 0 ? (
+              <tr>
+                  <td colSpan="6" className="expenses-empty">
+                        No expenses found
+                  </td>
+              </tr>
+                  ) : (
+          recentExpenses.map((expense) => (
             <tr key={expense.id}>
               <td>{expense.name}</td>
               <td><span>{expense.categoryName}</span></td>
@@ -94,7 +101,8 @@ const UserDashboard = () => {
               <td>{new Date(expense.date).toLocaleDateString()}</td>
               <td>{expense.description}</td>
             </tr>
-          ))}
+          ))
+        )}
         </tbody>
       </table>
       </div>

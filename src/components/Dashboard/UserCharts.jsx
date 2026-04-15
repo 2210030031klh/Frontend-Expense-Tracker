@@ -1,41 +1,41 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Pie, Line } from "react-chartjs-2";
+import React,{useState, useEffect}  from 'react'
+import axios from 'axios';
+import{ Pie, Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   ArcElement,
+  Tooltip,
+  Legend,
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import "./UserCharts.css";
+}from 'chart.js'
+import "./UserCharts.css"
 
 ChartJS.register(
   ArcElement,
+  Tooltip,
+  Legend,
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
-  Tooltip,
-  Legend
 );
 
 const UserCharts = () => {
-  const [categoryData, setCategoryData] = useState([]);
-  const [monthlyData, setMonthlyData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const[categoryData, setCategoryData] = useState([]);
+  const[monthlyData, setMonthlyData] = useState([]);
+  const[loading, setLoading] = useState(true);
 
   const CATEGORY_REPORT_API = `${import.meta.env.VITE_API_URL}/api/Expense/report/category`;
   const MONTHLY_REPORT_API = `${import.meta.env.VITE_API_URL}/api/Expense/report/monthly`;
 
-  const getAuthConfig = () => {
+  const getAuthConfig=()=>{
     const token = localStorage.getItem("accessToken");
     return {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`
       },
     };
   };
@@ -56,22 +56,21 @@ const UserCharts = () => {
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
   ];
 
-  const formatCurrency = (value) => `₹${Number(value).toLocaleString()}`;
+  const formatCurrency=(value)=>`₹${Number(value).toLocaleString()}`;
 
-  const fetchChartsData = async () => {
-    try {
-      const [categoryRes, monthlyRes] = await Promise.all([
+  const fetchCategoryData = async () => {
+    try{
+      const[categoryRes, monthlyRes] = await Promise.all([
         axios.get(CATEGORY_REPORT_API, getAuthConfig()),
         axios.get(MONTHLY_REPORT_API, getAuthConfig()),
       ]);
 
-      const formattedCategoryData = (categoryRes.data || []).map((item) => ({
+      const formattedCategoryData = (categoryRes.data||[]).map((item) => ({
         name: item.categoryName,
         value: item.totalAmount,
         count: item.totalExpenses,
       }));
-
-      const formattedMonthlyData = (monthlyRes.data || []).map((item) => ({
+      const formattedMonthlyData = (monthlyRes.data||[]).map((item) => ({
         month: `${monthNames[item.month - 1]} ${item.year}`,
         amount: item.totalAmount,
         count: item.totalExpenses,
@@ -79,101 +78,99 @@ const UserCharts = () => {
 
       setCategoryData(formattedCategoryData);
       setMonthlyData(formattedMonthlyData);
-    } catch (error) {
+    }catch(error){
       console.error("Error fetching chart data:", error);
       setCategoryData([]);
       setMonthlyData([]);
-    } finally {
+    }finally{
       setLoading(false);
+    }};
+
+    useEffect(() => {
+      fetchCategoryData();
+    }, []);
+
+    const pieData = {
+      labels: categoryData.map((item) => item.name),
+      datasets: [
+        {
+          data: categoryData.map((item) => item.value),
+          backgroundColor: COLORS.slice(0, categoryData.length),
+          borderColor: "#fff",
+          borderWidth: 2,
+        },
+      ],
+    };
+
+    const pieOptions = {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "bottom",
+          labels: {
+            boxWidth: 14,
+            padding: 16,
+          },
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context){
+              const label = context.label || "";
+              const value = context.raw || 0;
+              return `${label}: ${formatCurrency(value)}`;
+            },
+          },
+        },
+      },
+    };
+
+    const lineData = {
+      labels: monthlyData.map((item) => item.month),
+      datasets: [
+        {
+          label: "Expenses",
+          data: monthlyData.map((item) => item.amount),
+          borderColor: "#6366f1",
+          backgroundColor: "rgba(99, 102, 241, 0.5)",
+          tension: 0.4,
+          fill: false,
+          pointBackgroundColor: "#6366f1",
+          pointBorderColor: "#6366f1",
+          pointRadius: 4,
+          pointHoverRadius: 6,
+        },
+      ],
+    };
+
+    const lineOptions = {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: true,
+          position: "top",
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context){
+              return `Expenses: ${formatCurrency(context.raw)}`;
+            },
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: function(value){
+              return `₹${Number(value).toLocaleString()}`;
+            },
+          },
+        },
+      },
+    };
+    if(loading){
+      return <p className='usercharts-loading'>Loading charts...</p>;
     }
-  };
-
-  useEffect(() => {
-    fetchChartsData();
-  }, []);
-
-  const pieData = {
-    labels: categoryData.map((item) => item.name),
-    datasets: [
-      {
-        data: categoryData.map((item) => item.value),
-        backgroundColor: COLORS.slice(0, categoryData.length),
-        borderColor: "#ffffff",
-        borderWidth: 2,
-      },
-    ],
-  };
-
-  const pieOptions = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "bottom",
-        labels: {
-          boxWidth: 14,
-          padding: 16,
-        },
-      },
-      tooltip: {
-        callbacks: {
-          label: function (context) {
-            const label = context.label || "";
-            const value = context.raw || 0;
-            return `${label}: ${formatCurrency(value)}`;
-          },
-        },
-      },
-    },
-  };
-
-  const lineData = {
-    labels: monthlyData.map((item) => item.month),
-    datasets: [
-      {
-        label: "Expenses",
-        data: monthlyData.map((item) => item.amount),
-        borderColor: "#6366f1",
-        backgroundColor: "rgba(99, 102, 241, 0.15)",
-        tension: 0.35,
-        fill: false,
-        pointBackgroundColor: "#6366f1",
-        pointBorderColor: "#6366f1",
-        pointRadius: 4,
-        pointHoverRadius: 6,
-      },
-    ],
-  };
-
-  const lineOptions = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: true,
-        position: "top",
-      },
-      tooltip: {
-        callbacks: {
-          label: function (context) {
-            return `Expenses: ${formatCurrency(context.raw)}`;
-          },
-        },
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: {
-          callback: function (value) {
-            return `₹${Number(value).toLocaleString()}`;
-          },
-        },
-      },
-    },
-  };
-
-  if (loading) {
-    return <p className="usercharts-loading">Loading charts...</p>;
-  }
 
   return (
     <div className="usercharts-wrapper">
@@ -201,7 +198,7 @@ const UserCharts = () => {
             </div>
           )}
         </div>
-      </div>
+      </div>2
     </div>
   );
 };

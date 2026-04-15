@@ -1,0 +1,16 @@
+.app-footer {
+  width: 100%;
+  padding: 18px 24px;
+  text-align: center;
+
+  background: linear-gradient(to right, #eef2ff, #e0e7ff);
+  /* border-top: 1px solid #dbe4ff; */
+
+  font-family: Arial, sans-serif;
+}
+
+.app-footer p {
+  margin: 3px 0;
+  font-size: 14px;
+  color: #64748b;
+}

@@ -1,5 +1,7 @@
 import React from "react";
 import "./Home.css";
+import Footer from "./Footer";
+
 
 export default function Home() {
   return (
@@ -47,10 +49,12 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <div className="home-footer">
+      {/* <div className="home-footer">
         © 2026 ExpenseTracker. All rights reserved.
-      </div>
+        </div> */}
+      {/* <footer/> */}
 
+      {/* <Footer/> */}
     </div>
   );
 }

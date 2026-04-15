@@ -93,7 +93,7 @@ const Profile = () => {
               className="profile-btn profile-btn-danger"
               onClick={() => navigate("/ResetPassword")}
             >
-              Reset Password
+              Change Password
             </button>
           </div>
         </div>

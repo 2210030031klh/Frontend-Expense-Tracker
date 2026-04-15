@@ -15,19 +15,14 @@ const ExpenseFilters = ({
   const [selectedCategory, setSelectedCategory] = useState("");
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
+  const [fromInputType, setFromInputType] = useState("text");
+  const [toInputType, setToInputType] = useState("text");
 
   const CATEGORY_API = `${import.meta.env.VITE_API_URL}/api/category?type=Expense`;
 
   useEffect(() => {
     fetchCategories();
   }, []);
-
-  useEffect(() => {
-    if (fromDate && toDate) {
-      onDateFilter(fromDate, toDate);
-    }
-  }, [fromDate, toDate]);
-
 
   const fetchCategories = async () => {
     try {
@@ -45,11 +40,16 @@ const ExpenseFilters = ({
     }
   };
 
-  const handleApplyDate = () => {
+  const handleDateSet = () => {
+    if (!fromDate || !toDate) return;
+
+    if (fromDate > toDate) {
+      alert("From date cannot be greater than To date");
+      return;
+    }
+
     onDateFilter(fromDate, toDate);
   };
-
-  
 
   const handleClear = () => {
     setSearch("");
@@ -57,6 +57,8 @@ const ExpenseFilters = ({
     setSortOrder("recent");
     setFromDate("");
     setToDate("");
+    setFromInputType("text");
+    setToInputType("text");
     onClear();
   };
 
@@ -70,6 +72,42 @@ const ExpenseFilters = ({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+
+        <input
+          className="expensefilters-date"
+          type={fromInputType}
+          placeholder="From"
+          value={fromDate}
+          onFocus={() => setFromInputType("date")}
+          onBlur={() => {
+            if (!fromDate) setFromInputType("text");
+          }}
+          onChange={(e) => setFromDate(e.target.value)}
+          aria-label="From date"
+          title="From"
+        />
+
+        <input
+          className="expensefilters-date"
+          type={toInputType}
+          placeholder="To"
+          value={toDate}
+          onFocus={() => setToInputType("date")}
+          onBlur={() => {
+            if (!toDate) setToInputType("text");
+          }}
+          onChange={(e) => setToDate(e.target.value)}
+          aria-label="To date"
+          title="To"
+        />
+
+        <button
+          className="expensefilters-set"
+          onClick={handleDateSet}
+          type="button"
+        >
+          Set
+        </button>
 
         <select
           className="expensefilters-select"
@@ -89,32 +127,16 @@ const ExpenseFilters = ({
         </button>
       </div>
 
-      <div className="expensefilters-dates">
-        <input
-          className="expensefilters-date"
-          type="date"
-          value={fromDate}
-          onChange={(e) => setFromDate(e.target.value)}
-        />
-
-        <input
-          className="expensefilters-date"
-          type="date"
-          value={toDate}
-          onChange={(e) => setToDate(e.target.value)}
-        />
-      </div>
-
       <div className="expensefilters-categories">
         <button
           type="button"
           className={`expensefilters-category-btn ${
             selectedCategory === "" ? "active" : ""
           }`}
-          onClick={() => {setSelectedCategory("");
+          onClick={() => {
+            setSelectedCategory("");
             onCategoryChange("");
-          }
-          }
+          }}
         >
           All
         </button>
@@ -126,7 +148,8 @@ const ExpenseFilters = ({
             className={`expensefilters-category-btn ${
               selectedCategory === cat.categoryName ? "active" : ""
             }`}
-            onClick={() => {setSelectedCategory(cat.categoryName);
+            onClick={() => {
+              setSelectedCategory(cat.categoryName);
               onCategoryChange(cat.categoryName);
             }}
           >

@@ -85,7 +85,7 @@ const Register = () => {
             className='login-form' >
                             <h2 className="login-title">Welcome</h2>   
             <p className="login-subtitle">Sign up to manage your expenses</p>
-            <p>Username:</p>
+            {/* <p>Username:</p> */}
                 <input value={userName}
                 onChange={(e)=> 
                 {
@@ -95,7 +95,7 @@ const Register = () => {
                 </input>
                 <br />
 
-                <p>Email:</p>
+                {/* <p>Email:</p> */}
                 <input value={email}
                 onChange={(e)=>
                 {
@@ -105,7 +105,7 @@ const Register = () => {
                 className='input-field' type='email' placeholder='Enter your email'>
                 </input>
                 <br/>
-                <p>Password:</p>
+                {/* <p>Password:</p> */}
                 <input value={password}
                 onChange={(e)=>
                 {

@@ -124,3 +124,59 @@
         transform: translateY(0);
     }
 }
+
+.navbar-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-menu-icon {
+  font-size: 18px;
+  color: #4f46e5;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.navbar-menu-icon:hover {
+  color: #4338ca;
+}
+
+.profile-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-main-icon {
+  font-size: 18px;
+  color: #4f46e5;
+}
+
+.dropdown-profile a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dropdown-item-icon {
+  font-size: 14px;
+  color: #4f46e5;
+  flex-shrink: 0;
+}
+
+.profile-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.profile-menu-icon {
+  font-size: 16px;
+  color: #4f46e5;
+}
+
+.profile-main-icon {
+  font-size: 18px;
+  color: #4f46e5;
+}

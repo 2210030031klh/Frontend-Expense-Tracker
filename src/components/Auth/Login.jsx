@@ -96,7 +96,7 @@ const Login = () => {
 
                     </div>
                 
-                <p className='forgot' onClick={() => navigate("/Forgotpassword")}>
+                <p className='login-forgot-password' onClick={() => navigate("/Forgotpassword")}>
                 Forgot Password?
                 </p>
 

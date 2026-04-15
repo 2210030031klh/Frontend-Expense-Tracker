@@ -26,7 +26,7 @@ const IncomeCards = ({ summary }) => {
       <div className="income-cards-item">
         <h4 className="income-cards-title">Average</h4>
         <p className="income-cards-value">
-          ₹{(summary.averageAmount ?? 0).toFixed(2)}
+          ₹{(summary.averageAmount ?? 0).toLocaleString()}
         </p>
       </div>
     </div>
