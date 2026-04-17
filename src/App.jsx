@@ -12,7 +12,7 @@ import Income from './components/Income/Income'
 import Expense from './components/Expenses/Expense'
 import Budget from "./components/Budget/Budget"
 import ForgotPassword from './components/Auth/ForgotPassword'
-import LandingPage from './components/Common/LandingPage'
+import LandingPage from './components/LandingPage/LandingPage'
 import VerifyOtp from './components/Auth/VerifyOtp'
 import UpdateExpense from './components/Expenses/UpdateExpense'
 import AddExpense from './components/Expenses/AddExpense'
