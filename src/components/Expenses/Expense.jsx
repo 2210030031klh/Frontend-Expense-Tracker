@@ -248,7 +248,11 @@ const Expense = () => {
     <>
       <div className="expenses-page">
         <div className="expenses-header">
-          <h1 className="expenses-title">All Expenses</h1>
+          <h1 className="expenses-title">Your Expenses 💸
+          <p className="expenses-subtext">
+            Every expense you’ve made, clearly tracked in one place
+          </p>
+          </h1>
         <div className="expenses-header-actions">
 
           <button

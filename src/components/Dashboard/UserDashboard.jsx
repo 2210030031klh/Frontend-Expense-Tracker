@@ -64,9 +64,22 @@ const UserDashboard = () => {
     fetchUserRecentExpenses();
     fetchDashboardSummary();
   }, []);
+
+    const getGreeting = () => {
+    const hour = new Date().getHours();
+
+    if (hour < 12) return "Good Morning";
+    if (hour < 18) return "Good Afternoon";
+    return "Good Evening";
+  };
   return (
     <div className='userdashboard-page'>
-      <h1 className='User-greetings'>Hello {username}</h1>
+      <h1 className="User-greetings">
+        {getGreeting()}, <span>{username}</span> 👋
+        <p className="User-subtext">
+          Here’s your financial snapshot — let’s make today count 💰
+        </p>
+      </h1>
 
       <DashboardCards summary={summary} />
       <UserCharts />

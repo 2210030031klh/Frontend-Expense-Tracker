@@ -43,7 +43,7 @@ const Budget = () => {
       setBudgets(res.data || []);
     } catch (error) {
       console.error("Error fetching budgets:", error);
-      toast.error("Failed to load budgets");
+      // toast.error("Failed to load budgets");
     }
   };
 
@@ -130,6 +130,11 @@ const Budget = () => {
   return (
     <>
       <div className="budget-page">
+        <h1 className="budget-titlee">Your Budget 🎯
+          <p className="budget-subtext">
+            Plan your spending and stay on track with your financial goals
+          </p>
+          </h1>
         <div className="budget-container">
           <div className="budget-header">
             <h1 className="budget-title">Budget Tracker</h1>
@@ -207,7 +212,7 @@ const Budget = () => {
                         <td>₹{formatCurrency(budget.amount)}</td>
                         <td>{monthNames[budget.month - 1]}</td>
                         <td>{budget.year}</td>
-                        <td>
+                        <td className="budget-actions-cell">
                           <div className="budget-actions">
                             <button
                               className="budget-btn update"

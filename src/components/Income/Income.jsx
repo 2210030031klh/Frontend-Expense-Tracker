@@ -175,7 +175,12 @@ const Income = () => {
     <>
       <div className="incomes-page">
         <div className="incomes-header">
-          <h2 className="incomes-title">All Incomes</h2>
+          <h2 className="incomes-title">
+            Your Incomes 💰
+            <p className="incomes-subtext">
+              Track, manage, and stay on top of every rupee you earn
+            </p>
+          </h2>
 
           <button
             className="incomes-add-button"

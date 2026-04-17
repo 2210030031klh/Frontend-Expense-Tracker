@@ -43,7 +43,23 @@
   font-weight: 600;
 }
 
-.usercharts-pie-container,
+.usercharts-pie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 320px; /* control chart height */
+
+  margin: 0 auto;
+}
+
+/* control actual canvas size */
+.usercharts-pie-container canvas {
+  max-width: 280px !important;
+  max-height: 280px !important;
+}
+
 .usercharts-line-container {
   position: relative;
   width: 100%;

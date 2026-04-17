@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import Footer from "./Footer";
+import Footer from "../Common/Footer";
 
 
 export default function Home() {
@@ -47,14 +47,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      {/* <div className="home-footer">
-        © 2026 ExpenseTracker. All rights reserved.
-        </div> */}
-      {/* <footer/> */}
-
-      {/* <Footer/> */}
     </div>
   );
 }

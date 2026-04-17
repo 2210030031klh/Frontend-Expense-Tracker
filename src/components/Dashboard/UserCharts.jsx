@@ -198,7 +198,7 @@ const UserCharts = () => {
             </div>
           )}
         </div>
-      </div>2
+      </div>
     </div>
   );
 };
