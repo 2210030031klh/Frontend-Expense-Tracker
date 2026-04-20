@@ -25,11 +25,12 @@ const Expense = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [exporting, setExporting] = useState(false);
+  const [exportFormat, setExportFormat] = useState("xlsx");
 
   const navigate = useNavigate();
 
   const API = `${import.meta.env.VITE_API_URL}/api/Expense`;
-  const export_API= `${import.meta.env.VITE_API_URL}/api/Expense/export`;
+  const export_API = `${import.meta.env.VITE_API_URL}/api/Expense/export`;
 
   const getAuthConfig = () => {
     const token = localStorage.getItem("accessToken");
@@ -201,40 +202,43 @@ const Expense = () => {
       toast.error("Failed to delete expense. Please try again.");
     }
   };
-    const handleExportExcel = async () => {
-    try {
-      setExporting(true);
 
-      const response = await axios.get(export_API,getAuthConfig(),
-        {
-          responseType: "blob",
-        }
-      );
+const handleExport = async () => {
+  try {
+    setExporting(true);
 
-      const blob = new Blob([
-        response.data,
-      ], {
-        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      });
+    const response = await axios.get(export_API, {
+      ...getAuthConfig(),
+      params: {
+        format: exportFormat,
+      },
+      responseType: "blob",
+    });
 
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "Expenses.xlsx";
+    const url = window.URL.createObjectURL(response.data);
+    const link = document.createElement("a");
 
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
+    link.href = url;
+    link.download = exportFormat === "csv" ? "Expenses.csv" : "Expenses.xlsx";
 
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error("Error exporting expenses:", error);
-      alert("Failed to export expenses.");
-    } finally {
-      setExporting(false);
-    }
-  };
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
 
+    window.URL.revokeObjectURL(url);
+
+    toast.success(
+      exportFormat === "csv"
+        ? "Expenses.csv exported successfully"
+        : "Expenses.xlsx exported successfully"
+    );
+  } catch (error) {
+    console.error("Error exporting expenses:", error);
+    toast.error("Failed to export expenses.");
+  } finally {
+    setExporting(false);
+  }
+};
   const handleClearFilters = async () => {
     setSearch("");
     setSortOrder("recent");
@@ -244,34 +248,43 @@ const Expense = () => {
   };
 
   return (
-
     <>
       <div className="expenses-page">
         <div className="expenses-header">
-          <h1 className="expenses-title">Your Expenses 💸
-          <p className="expenses-subtext">
-            Every expense you’ve made, clearly tracked in one place
-          </p>
+          <h1 className="expenses-title">
+            Your Expenses 💸
+            <p className="expenses-subtext">
+              Every expense you’ve made, clearly tracked in one place
+            </p>
           </h1>
-        <div className="expenses-header-actions">
 
-          <button
-            className="expenses-add-button"
-            onClick={() => navigate("/AddExpense")}
-          >
-            + Add Expense
-          </button>
+          <div className="expenses-header-actions">
+            <button
+              className="expenses-add-button"
+              onClick={() => navigate("/AddExpense")}
+            >
+              + Add Expense
+            </button>
 
-          <button
-            className="expenses-add-button"
-            onClick={handleExportExcel}
-            disabled={exporting}
-          >
-            {exporting ? "Exporting..." : "Export Excel"}
-          </button>
+            <select
+              className="expenses-export-select"
+              value={exportFormat}
+              onChange={(e) => setExportFormat(e.target.value)}
+              disabled={exporting}
+            >
+              <option value="xlsx">Excel (.xlsx)</option>
+              <option value="csv">CSV (.csv)</option>
+            </select>
+
+            <button
+              className="expenses-add-button"
+              onClick={handleExport}
+              disabled={exporting}
+            >
+              {exporting ? "Exporting..." : `Export ${exportFormat.toUpperCase()}`}
+            </button>
+          </div>
         </div>
-      </div>
-
 
         <ExpenseCards summary={summary} />
 
@@ -320,24 +333,24 @@ const Expense = () => {
                         <td>{new Date(exp.date).toLocaleDateString()}</td>
                         <td>{exp.description || "-"}</td>
                         <td className="expenses-actions">
-                        <button
-                          className="expenses-btn update"
-                          onClick={() =>
-                            navigate("/UpdateExpense", {
-                              state: {
-                                expenseId: exp.expenseId,
-                                name: exp.name,
-                                amount: exp.amount,
-                                date: exp.date,
-                                description: exp.description,
-                                categoryId: exp.categoryId,
-                                categoryName: exp.categoryName,
-                              },
-                            })
-                          }
-                        >
-                          Update
-                        </button>
+                          <button
+                            className="expenses-btn update"
+                            onClick={() =>
+                              navigate("/UpdateExpense", {
+                                state: {
+                                  expenseId: exp.expenseId,
+                                  name: exp.name,
+                                  amount: exp.amount,
+                                  date: exp.date,
+                                  description: exp.description,
+                                  categoryId: exp.categoryId,
+                                  categoryName: exp.categoryName,
+                                },
+                              })
+                            }
+                          >
+                            Update
+                          </button>
 
                           <button
                             className="expenses-btn delete"
