@@ -320,14 +320,24 @@ const Expense = () => {
                         <td>{new Date(exp.date).toLocaleDateString()}</td>
                         <td>{exp.description || "-"}</td>
                         <td className="expenses-actions">
-                          <button
-                            className="expenses-btn update"
-                            onClick={() =>
-                              navigate("/UpdateExpense", { state: exp })
-                            }
-                          >
-                            Update
-                          </button>
+                        <button
+                          className="expenses-btn update"
+                          onClick={() =>
+                            navigate("/UpdateExpense", {
+                              state: {
+                                expenseId: exp.expenseId,
+                                name: exp.name,
+                                amount: exp.amount,
+                                date: exp.date,
+                                description: exp.description,
+                                categoryId: exp.categoryId,
+                                categoryName: exp.categoryName,
+                              },
+                            })
+                          }
+                        >
+                          Update
+                        </button>
 
                           <button
                             className="expenses-btn delete"

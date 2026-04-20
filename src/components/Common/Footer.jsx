@@ -5,7 +5,14 @@ const Footer = () => {
   return (
     <footer className="app-footer">
       <p>© {new Date().getFullYear()} ExpenseTracker. All rights reserved.</p>
-      <p>Contact: +91 9876543210 | support@expensetracker.com</p>
+      <p>
+        Contact: +91 8096766928 |{" "}
+        <span className="footer-email">
+          <a href="mailto:shashidhar.reddyy@gmail.com">
+            shashidhar.reddyy@gmail.com
+          </a>
+        </span>
+      </p>
     </footer>
   );
 };

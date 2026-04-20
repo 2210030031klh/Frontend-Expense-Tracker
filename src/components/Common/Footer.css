@@ -14,3 +14,25 @@
   font-size: 14px;
   color: #64748b;
 }
+.app-footer {
+  background-color: #1f2937;
+  color: #ffffff;
+  text-align: center;
+  padding: 16px 10px;
+  font-size: 14px;
+}
+
+.app-footer p {
+  margin: 6px 0;
+}
+
+.footer-email a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-email a:hover {
+  color: #444c5a;
+  text-decoration: underline;
+}

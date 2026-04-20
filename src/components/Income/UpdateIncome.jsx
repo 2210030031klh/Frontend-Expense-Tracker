@@ -18,7 +18,10 @@ const UpdateIncome = () => {
     source: "",
   });
 
+  const [sources, setSources] = useState([]);
+
   const INCOME_API = `${import.meta.env.VITE_API_URL}/api/income`;
+  const SOURCE_API = `${import.meta.env.VITE_API_URL}/api/category?type=Income`;
 
   useEffect(() => {
     if (state) {
@@ -31,6 +34,27 @@ const UpdateIncome = () => {
       });
     }
   }, [state]);
+
+  useEffect(() => {
+    const fetchSources = async () => {
+      try {
+        const token = localStorage.getItem("accessToken");
+
+        const response = await axios.get(SOURCE_API, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setSources(response.data);
+      } catch (error) {
+        console.error("Error fetching income sources:", error);
+        toast.error("Failed to load income sources");
+      }
+    };
+
+    fetchSources();
+  }, [SOURCE_API]);
 
   const handleChange = (e) => {
     setForm({
@@ -114,14 +138,19 @@ const UpdateIncome = () => {
             placeholder="Amount"
           />
 
-          {/* 🔥 THIS IS THE MAIN CHANGE */}
-          <input
+          <select
             className="update-income-input"
             name="source"
             value={form.source}
             onChange={handleChange}
-            placeholder="Source (Salary, Freelance, etc.)"
-          />
+          >
+            <option value="">Select Source</option>
+            {sources.map((src) => (
+              <option key={src.categoryId} value={src.categoryName}>
+                {src.categoryName}
+              </option>
+            ))}
+          </select>
 
           <input
             className="update-income-input"
