@@ -1,5 +1,3 @@
-/* AddBudget.css */
-
 .addbudget-page {
   font-family: Arial, sans-serif;
   background: linear-gradient(to right, #eef2ff, #e0e7ff);
@@ -80,7 +78,6 @@
   transition: all 0.3s ease;
 }
 
-/* Submit Button */
 .addbudget-submit {
   background: #4f46e5;
   color: white;
@@ -91,7 +88,6 @@
   background: #4338ca;
 }
 
-/* Cancel Button */
 .addbudget-cancel {
   background: white;
   color: #4f46e5;
@@ -102,7 +98,7 @@
   background: #eef2ff;
 }
 
-/* No Data State (optional) */
+
 .addbudget-no-data {
   font-family: Arial, sans-serif;
   min-height: 100vh;

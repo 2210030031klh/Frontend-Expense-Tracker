@@ -1,12 +1,8 @@
-/* Home.css */
-
 .home-container {
   font-family: Arial, sans-serif;
   background: linear-gradient(to right, #eef2ff, #e0e7ff);
   min-height: 100vh;
 }
-
-/* HERO */
 .home-hero {
   display: flex;
   justify-content: space-between;
@@ -30,12 +26,28 @@
   margin-top: 20px;
   color: #555;
 }
+.home-cta-btn {
+  margin-top: 25px;
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.home-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+}
 
 .home-hero-image img {
   width: 300px;
 }
 
-/* FEATURES */
 .home-features {
   background: white;
   padding: 60px 40px;
@@ -56,8 +68,6 @@
   width: 250px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
-/* FOOTER */
 .home-footer {
   text-align: center;
   padding: 20px;
@@ -65,9 +75,7 @@
 }
 
 
-/* ============================= */
-/* 📱 MOBILE RESPONSIVE (<=768px) */
-/* ============================= */
+
 @media (max-width: 768px) {
 
   .home-hero {
@@ -87,6 +95,12 @@
 
   .home-hero-text p {
     font-size: 14px;
+  }
+  .home-cta-btn {
+    width: 100%;
+    max-width: 280px;
+    margin: 25px auto 0;
+    display: block;
   }
 
   .home-hero-image img {
@@ -115,9 +129,6 @@
 }
 
 
-/* ============================= */
-/* 📱 SMALL MOBILE (<=480px) */
-/* ============================= */
 @media (max-width: 480px) {
 
   .home-hero {
@@ -130,6 +141,11 @@
 
   .home-hero-text p {
     font-size: 13px;
+  }
+
+  .home-cta-btn {
+    font-size: 14px;
+    padding: 10px 18px;
   }
 
   .home-hero-image img {

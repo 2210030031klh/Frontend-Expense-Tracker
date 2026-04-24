@@ -2,7 +2,7 @@
   margin: 0px 0 14px;
 }
 
-/* 6 controls now */
+
 .expensefilters-container {
   display: grid;
   grid-template-columns: 1.6fr 0.9fr 0.9fr 0.8fr 0.8fr 0.7fr;
@@ -11,7 +11,7 @@
   margin-bottom: 8px;
 }
 
-/* Search */
+
 .expensefilters-input {
   width: 100%;
   height: 48px;
@@ -30,7 +30,7 @@
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
 }
 
-/* Date */
+
 .expensefilters-date {
   width: 100%;
   height: 48px;
@@ -50,7 +50,7 @@
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
 }
 
-/* Sort dropdown */
+
 .expensefilters-select {
   width: 100%;
   height: 48px;
@@ -71,7 +71,6 @@
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
 }
 
-/* Set button */
 .expensefilters-set {
   width: 100%;
   height: 48px;
@@ -95,7 +94,6 @@
   transform: translateY(-1px);
 }
 
-/* Clear button */
 .expensefilters-clear {
   width: 100%;
   height: 48px;
@@ -119,7 +117,7 @@
   transform: translateY(-1px);
 }
 
-/* Category buttons */
+
 .expensefilters-categories {
   display: flex;
   gap: 10px;

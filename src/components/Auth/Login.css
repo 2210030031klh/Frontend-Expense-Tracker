@@ -4,13 +4,13 @@
     display: flex;
     align-items: center;
     justify-content : center;
-
+ 
     background: linear-gradient(135deg, #64e3dd, #f188a9);
     position: relative;
     overflow: hidden;
 }
+ 
 
-/* SOFT BACKGROUND BLOBS */
 .login-container::before,
 .login-container::after{
     content: "";
@@ -19,7 +19,7 @@
     filter: blur(80px);
     opacity: 0.5;
 }
-
+ 
 .login-container::before{
     width: 300px;
     height: 300px;
@@ -39,26 +39,26 @@
     bottom: -120px;
     right: -120px;
 }
+ 
 
-/* LOGIN BOX */
 .login-box{
     border-radius: 12px;
     padding: 40px;
-
+ 
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
-
+ 
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     border: 1px solid #e5e7eb;
-} 
-
+}
+ 
 .login-form{
     display:flex;
     flex-direction: column;
     align-items: center;
 }
+ 
 
-/* INPUT */
 .input-field{
     outline: none;
     background: white;
@@ -71,15 +71,14 @@
     color: black;
     transition: 0.3s;
 }
+ 
 
-/* FOCUS EFFECT */
 .input-field:focus{
     border-color: #4f46e5;
     box-shadow: 0 0 0 2px rgba(79,70,229,0.1);
 }
-
-
-/* BUTTON */
+ 
+ 
 .login-button{
     margin-top: 40px;
     background-color: #4f46e5;
@@ -91,45 +90,43 @@
     cursor: pointer;
     transition: 0.3s;
 }
-
+ 
 .login-button:hover{
     background-color: #4338ca;
 }
 
-/* DISABLED */
 .login-button:disabled{
     background-color: #a5b4fc;
     cursor: not-allowed;
 }
 
-/* REGISTER */
 .register-text{
     margin-top: 20px;
     color: #6b7280;
     font-size: 14px;
 }
-
+ 
 .register-link{
     color: #4f46e5;
     cursor: pointer;
     font-weight: 500;
 }
-
+ 
 .register-link:hover{
     text-decoration: underline;
 }
-
+ 
 .login-title {
     color: #4f46e5;
     margin-bottom: 5px;
 }
-
+ 
 .login-subtitle {
     font-size: 14px;
     color: #6b7280;
     margin-bottom: 15px;
 }
-
+ 
 .login-forgot-password {
     margin-top: 12px;
     width: 250px;          
@@ -139,8 +136,8 @@
     font-weight: 500;         
     font-size: 14px;
 }
-
-
+ 
+ 
 .login-forgot-password {
     color: #4f46e5 !important;
     text-decoration: underline;

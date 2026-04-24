@@ -1,19 +1,16 @@
-/* ONLY add this — nothing else */
 
-/* match heading style */
 .login-box h2 {
     color: #4f46e5;
     margin-bottom: 5px;
 }
 
-/* match subtitle */
 .login-box p {
     font-size: 14px;
     color: #6b7280;
     margin-bottom: 15px;
 }
 
-/* match button style exactly like login */
+
 button {
     margin-top: 40px;
     background-color: #4f46e5;

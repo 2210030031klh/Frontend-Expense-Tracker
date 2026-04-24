@@ -8,8 +8,8 @@ const Footer = () => {
       <p>
         Contact: +91 8096766928 |{" "}
         <span className="footer-email">
-          <a href="mailto:shashidhar.reddyy@gmail.com">
-            shashidhar.reddyy@gmail.com
+          <a href="mailto:gshashidhar.reddyy@gmail.com">
+            gshashidhar.reddyy@gmail.com
           </a>
         </span>
       </p>

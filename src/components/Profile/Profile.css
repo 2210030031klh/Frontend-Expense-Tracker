@@ -64,14 +64,12 @@
   font-weight: 500;
 }
 
-/* ===== Grid ===== */
 .profile-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(260px, 1fr));
   gap: 18px;
 }
 
-/* ===== Cards ===== */
 .profile-card {
   background: white;
   border-radius: 18px;
@@ -87,7 +85,6 @@
   font-weight: 600;
 }
 
-/* ===== Info ===== */
 .profile-info-group {
   margin-bottom: 16px;
 }
@@ -106,7 +103,6 @@
   font-weight: 500;
 }
 
-/* ===== Security ===== */
 .profile-security-text {
   font-size: 14px;
   color: #6b7280;
@@ -114,7 +110,6 @@
   margin-bottom: 18px;
 }
 
-/* ===== Button ===== */
 .profile-btn {
   padding: 10px 16px;
   border: none;
@@ -133,7 +128,6 @@
   background: #dc2626;
 }
 
-/* ===== States ===== */
 .profile-loading,
 .profile-empty {
   font-family: Arial, sans-serif;
@@ -146,7 +140,6 @@
   font-size: 18px;
 }
 
-/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .profile-grid {
     grid-template-columns: 1fr;

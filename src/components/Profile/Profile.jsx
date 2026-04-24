@@ -42,7 +42,6 @@ const Profile = () => {
         setLoading(false);
       }
     };
-
     fetchProfile();
   }, [navigate]);
 
@@ -52,7 +51,6 @@ const Profile = () => {
   return (
     <div className="profile-page">
       <div className="profile-container">
-        {/* Top Profile Banner */}
         <div className="profile-banner">
           <div className="profile-banner-left">
             <div className="profile-avatar">
@@ -65,8 +63,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-
-        {/* Info Cards */}
+        
         <div className="profile-grid">
           <div className="profile-card">
             <h3 className="profile-card-title">Account Information</h3>

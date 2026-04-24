@@ -9,7 +9,6 @@ const LandingPage = () => {
   return (
     <div className="landing-container">
       <div className="landing-content">
-        {/* Navbar */}
         <div className="landing-navbar">
           <h1 className="landing-logo">ExpenseTracker</h1>
           <div className="landing-nav-buttons">
@@ -27,8 +26,6 @@ const LandingPage = () => {
             </button>
           </div>
         </div>
-
-        {/* Hero Section */}
         <div className="landing-hero">
           <div className="landing-hero-text">
             <h2>
@@ -63,7 +60,6 @@ const LandingPage = () => {
           </div>
         </div>
 
-        {/* Features */}
         <div className="landing-features">
           <h3>Features</h3>
 
@@ -85,8 +81,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      
-      <Footer />
+      <Footer/>
     </div>
   );
 };

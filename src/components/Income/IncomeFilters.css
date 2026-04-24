@@ -10,7 +10,6 @@
   margin-bottom: 8px;
 }
 
-/* Search */
 .incomefilters-input {
   width: 100%;
   height: 48px;
@@ -29,7 +28,7 @@
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
 }
 
-/* Date */
+
 .incomefilters-date {
   width: 100%;
   height: 48px;
@@ -49,7 +48,6 @@
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
 }
 
-/* Sort dropdown */
 .incomefilters-select {
   width: 100%;
   height: 48px;
@@ -70,7 +68,6 @@
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
 }
 
-/* Set button */
 .incomefilters-set {
   width: 100%;
   height: 48px;
@@ -94,7 +91,7 @@
   transform: translateY(-1px);
 }
 
-/* Clear button */
+
 .incomefilters-clear {
   width: 100%;
   height: 48px;
@@ -122,7 +119,6 @@
   display: contents;
 }
 
-/* Category buttons */
 .incomefilters-categories {
   display: flex;
   gap: 10px;

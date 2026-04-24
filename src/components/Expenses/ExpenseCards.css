@@ -1,13 +1,9 @@
-/* ExpenseCards.css */
-
-/* 🔹 Container */
 .expenses-cards-container {
   display: flex;
   gap: 14px;
   margin: 20px 0 25px;
 }
 
-/* 🔹 Small compact card */
 .expenses-cards-item {
   flex: 1;
   padding: 12px 14px;
@@ -21,20 +17,19 @@
   transition: all 0.2s ease;
 }
 
-/* 🔹 Hover */
 .expenses-cards-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(79, 70, 229, 0.1);
 }
 
-/* 🔹 Title */
+
 .expenses-cards-title {
   margin: 0 0 4px;
   font-size: 13px;
   color: #6b7280;
 }
 
-/* 🔹 Value */
+
 .expenses-cards-value {
   margin: 0;
   font-size: 20px;
@@ -42,12 +37,12 @@
   color: #111827;
 }
 
-/* 🔹 Highlight (Total) */
+
 .expenses-cards-value-highlight {
   color: #ef4444;
 }
 
-/* 🔹 Optional subtle color accents */
+
 .expenses-cards-item:nth-child(2) .expenses-cards-value {
   color: #4f46e5;
 }
@@ -60,12 +55,12 @@
   color: #d97706;
 }
 
-/* 🔹 Keep all in one row always */
+
 .expenses-cards-container {
   flex-wrap: nowrap;
 }
 
-/* 🔹 Scroll if screen is small */
+
 @media (max-width: 768px) {
   .expenses-cards-container {
     overflow-x: auto;

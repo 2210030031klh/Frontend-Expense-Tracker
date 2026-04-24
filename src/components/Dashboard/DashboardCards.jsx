@@ -7,7 +7,6 @@ const DashboardCards = ({ summary }) => {
   if (!summary) {
     return (
       <div className="dashboard-cards-container">
-        {/* total */}
         <div className="dashboard-cards-item">
           <h4 className="dashboard-cards-title">Net Balance</h4>
           <p className="dashboard-cards-value dashboard-cards-value-highlight">₹0</p>

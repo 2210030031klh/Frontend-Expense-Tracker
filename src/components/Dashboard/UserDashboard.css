@@ -11,13 +11,13 @@
   margin-left: 20px;
   font-size: 32px;
   font-weight: 800;
-  color: #0f172a; /* dark clean text */
+  color: #0f172a;
   margin-bottom: 8px;
   letter-spacing: -0.4px;
 }
 
 .User-greetings span {
-  color: #4f46e5; /* subtle primary accent */
+  color: #4f46e5;
   font-weight: 900;
 }
 

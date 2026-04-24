@@ -1,13 +1,14 @@
 import React from "react";
 import "./Home.css";
 import Footer from "../Common/Footer";
-
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
     <div className="home-container">
 
-      {/* Hero Section */}
       <div className="home-hero">
         <div className="home-hero-text">
           <h2>
@@ -16,6 +17,13 @@ export default function Home() {
           <p>
             Track your expenses, manage budgets, and gain insights into your spending habits — all in one place.
           </p>
+
+          <button 
+            className="home-cta-btn"
+            onClick={() => navigate("/AddExpense")}
+          >
+            Start Tracking by Adding Your Expenses
+          </button>
         </div>
 
         <div className="home-hero-image">
@@ -47,6 +55,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

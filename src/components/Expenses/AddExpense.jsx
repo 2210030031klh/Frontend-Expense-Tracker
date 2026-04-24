@@ -54,7 +54,6 @@ const AddExpense = () => {
     const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ✅ frontend validation
     if (!form.name || form.name.trim().length < 2) {
         toast.error("Expense name must be at least 2 characters long.");
         return;

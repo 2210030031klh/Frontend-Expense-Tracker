@@ -43,11 +43,11 @@ const App = () => {
         <Layout/>
       </ProtectedRoute>
     }>
-      <Route path='/home' element={<Home/>}/>
-      <Route path='/UserDashboard' element = {<UserDashboard/>}/>
-      <Route path='/Logout' element={<Logout/>}/>
-      <Route path="/Categories" element={<Category/>}/>
-      <Route path="/Profile" element={<Profile/>}/>
+    <Route path='/home' element={<Home/>}/>
+    <Route path='/UserDashboard' element = {<UserDashboard/>}/>
+    <Route path='/Logout' element={<Logout/>}/>
+    <Route path="/Categories" element={<Category/>}/>
+    <Route path="/Profile" element={<Profile/>}/>
     <Route path="/Logout" element={<Logout/>}/>
     <Route path="/Income" element={<Income/>}/>
     <Route path="/Expenses" element={<Expense/>}/>
@@ -59,11 +59,7 @@ const App = () => {
     <Route path="/UpdateIncome" element={<UpdateIncome/>}/>
     <Route path="/AddBudget" element={<AddBudget />} />
     <Route path="/EditBudget" element={<EditBudget />} />
- 
-
-
     </Route>
-
    </Routes>
    </>
   )
