@@ -49,7 +49,7 @@ const ExpenseCards = ({ summary }) => {
 
       <div className="expenses-cards-item">
         <h4 className="expenses-cards-title">Average</h4>
-        <p className="expenses-cards-value">₹{summary.averageAmount.toFixed(2)}</p>
+        <p className="expenses-cards-value">₹{(summary.averageAmount ?? 0).toLocaleString()}</p>
       </div>
     </div>
   );
