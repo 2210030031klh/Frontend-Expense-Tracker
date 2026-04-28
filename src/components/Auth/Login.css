@@ -29,8 +29,8 @@
 }
 .eye-icon{
     position : absolute;
-    top:197px;
-    left: 300px;
+    top:233px;
+    left: 285px;
 }
 .login-container::after{
     width: 350px;
@@ -50,12 +50,15 @@
  
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     border: 1px solid #e5e7eb;
+    width: 400px;
+    max-width: 100%;
 }
  
 .login-form{
+    width: 100%;
     display:flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
 }
  
 
@@ -67,9 +70,12 @@
     padding: 12px 20px;
     font-size: 16px;
     margin-top: 16px;
-    width:250px;
+    width:700px;
+    max-width: 100%;
+
     color: black;
     transition: 0.3s;
+
 }
  
 

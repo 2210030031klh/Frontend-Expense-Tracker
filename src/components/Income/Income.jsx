@@ -41,7 +41,7 @@ const Income = () => {
       setFilteredIncomes(data);
     } catch (error) {
       console.error("Error fetching incomes:", error);
-      toast.error("Failed to load incomes");
+      // toast.error("Failed to load incomes");
     } finally {
       setLoading(false);
     }
